@@ -11,7 +11,7 @@ import { Toast } from 'react-toastify/dist/components'
 import {Buffer} from 'buffer'
 
 function SetAvatar() {
-    const api = 'http://api.multiavatar.com'
+    const api = 'https://api.multiavatar.com'
     const navigate = useNavigate()
     const [avatars, setAvatars] = useState<string[]>([])
     const [isLoading, setIsLoading] = useState(true)
