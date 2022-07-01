@@ -11,7 +11,7 @@ import { Toast } from 'react-toastify/dist/components'
 import {Buffer} from 'buffer'
 
 function SetAvatar() {
-    const api = 'https://api.multiavatar.com'
+    const api = 'http://api.multiavatar.com'
     const navigate = useNavigate()
     const [avatars, setAvatars] = useState<string[]>([])
     const [isLoading, setIsLoading] = useState(true)
@@ -37,6 +37,7 @@ function SetAvatar() {
             const {data}  = await axios.post(`${setAvatarRoute}/${user._id}`,{
               image: avatars[selectedAvatar]
             })
+            console.log(data.isSet)
             if(data.isSet) {
               user.isAvatarImageSet = true,
               user.avatarImage = data.image
@@ -52,7 +53,7 @@ function SetAvatar() {
     useEffect(() => {
         const data:string[] = []
         const getAvatarImg = async () => {
-            for(let i=0; i<2; i++) {
+            for(let i=0; i<3; i++) {
                 const res = await axios.get(`${api}/${Math.round(Math.random()*1000)}`)
                 console.log(res.data)
                 const buffer = new Buffer(res.data)

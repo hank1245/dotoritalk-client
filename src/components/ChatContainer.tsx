@@ -54,6 +54,7 @@ const ChatContainer = ({currentChat,currentUser, socket}:Props) => {
          msgs.push({fromSelf: true, message:msg})
          setMessages(msgs)
     }
+    
     useEffect(() => {
       if(socket.current) {
         socket.current.on('msg-received',(msg: any) => {
